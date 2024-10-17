@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="@color/white">
+
+    <!-- Course ID input field -->
+    <EditText
+        android:id="@+id/editTextCourseId"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Course ID"
+        android:inputType="text"
+        android:padding="10dp"
+        android:textSize="16sp"/>
+
+    <!-- Course Name input field -->
+    <EditText
+        android:id="@+id/editTextCourseName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Course Name"
+        android:inputType="text"
+        android:padding="10dp"
+        android:textSize="16sp"
+        android:layout_marginTop="10dp"/>
+
+    <!-- Submit button to add the course -->
+    <Button
+        android:id="@+id/buttonSubmitCourse"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add Course"
+        android:layout_gravity="end"
+        android:layout_marginTop="16dp"/>
+</LinearLayout>

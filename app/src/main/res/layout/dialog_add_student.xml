@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="@drawable/shape_round"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:backgroundTint="@color/white"
+    android:padding="16dp">
+
+    <!-- Student ID Input Field -->
+    <EditText
+        android:textColorHint="#B4000000"
+        android:background="@drawable/shape_round"
+        android:id="@+id/editTextStudentId"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Student ID"
+        android:inputType="text" />
+
+    <!-- Name Input Field -->
+    <EditText
+        android:textColorHint="#B4000000"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/shape_round"
+        android:id="@+id/editTextStudentName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Student Name"
+        android:inputType="textPersonName" />
+
+    <!-- Age Input Field -->
+    <EditText
+        android:textColorHint="#B4000000"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/shape_round"
+        android:id="@+id/editTextStudentAge"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Age"
+        android:inputType="number" />
+
+    <!-- Gender Input Field -->
+    <EditText
+        android:textColorHint="#B4000000"
+        android:background="@drawable/shape_round"
+        android:layout_marginTop="10dp"
+        android:id="@+id/editTextStudentGender"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Gender"
+        android:inputType="text" />
+
+    <!-- Email Input Field -->
+    <EditText
+        android:textColorHint="#B4000000"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/shape_round"
+        android:id="@+id/editTextStudentEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Email"
+        android:inputType="textEmailAddress" />
+
+    <!-- Phone Number Input Field -->
+    <EditText
+        android:textColorHint="#B4000000"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/shape_round"
+        android:id="@+id/editTextStudentPhone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Phone Number"
+        android:inputType="phone" />
+
+    <!-- Address Input Field -->
+    <EditText
+        android:textColorHint="#B4000000"
+        android:background="@drawable/shape_round"
+        android:layout_marginTop="10dp"
+        android:id="@+id/editTextStudentAddress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Address"
+        android:inputType="textPostalAddress" />
+
+    <!-- Submit Button -->
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/buttonSubmitStudent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Submit"
+        android:layout_marginTop="10dp"
+        android:backgroundTint="@color/primaryColor"
+        android:background="@drawable/bottom_round"/>
+
+</LinearLayout>

@@ -1,0 +1,98 @@
+{
+  "project_info": {
+    "project_number": "806171579695",
+    "firebase_url": "https://vetappointmentbooker-default-rtdb.firebaseio.com",
+    "project_id": "vetappointmentbooker",
+    "storage_bucket": "vetappointmentbooker.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:806171579695:android:b58262b7fc6bc6a7413dda",
+        "android_client_info": {
+          "package_name": "com.example.carparkingapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "806171579695-bhnl1dr8m8edm0gbpnjnofqjfbmg2a63.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCJ67Dft1QsaXArsiXYpoz1a66T0sjJ0hs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "806171579695-bhnl1dr8m8edm0gbpnjnofqjfbmg2a63.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:806171579695:android:d3451daad9b04250413dda",
+        "android_client_info": {
+          "package_name": "com.example.test"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "806171579695-bhnl1dr8m8edm0gbpnjnofqjfbmg2a63.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCJ67Dft1QsaXArsiXYpoz1a66T0sjJ0hs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "806171579695-bhnl1dr8m8edm0gbpnjnofqjfbmg2a63.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:806171579695:android:154e20ad6c388c6f413dda",
+        "android_client_info": {
+          "package_name": "nt.vn.missingmarks"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "806171579695-bhnl1dr8m8edm0gbpnjnofqjfbmg2a63.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCJ67Dft1QsaXArsiXYpoz1a66T0sjJ0hs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "806171579695-bhnl1dr8m8edm0gbpnjnofqjfbmg2a63.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

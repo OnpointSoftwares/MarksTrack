@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+<!-- Primary Colors -->
+<color name="primaryColor">#DA0A1B</color>
+<color name="primaryDarkColor">#E64A19</color>
+<color name="accentColor">#FFC107</color>
+
+<!-- Background and Text Colors -->
+<color name="backgroundColor">#FFFFFF</color>
+<color name="textColorPrimary">#212121</color>
+<color name="textColorSecondary">#757575</color>
+
+<!-- Button Colors -->
+<color name="buttonColor">#4CAF50</color>
+<color name="buttonTextColor">#FFFFFF</color>
+
+<!-- Error and Warning Colors -->
+<color name="errorColor">#D32F2F</color>
+<color name="warningColor">#FF9800</color>
+</resources>

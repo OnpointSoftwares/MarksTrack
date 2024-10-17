@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="@drawable/shape_round"
+    android:backgroundTint="@color/white">
+
+    <!-- Lecturer ID Input -->
+    <EditText
+        android:id="@+id/editTextLecturerId"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Lecturer ID"
+        android:inputType="text"
+        android:textColorHint="#B4000000"
+        android:background="@drawable/shape_round"
+        android:layout_marginTop="20dp" />
+
+    <!-- Lecturer Name Input -->
+    <EditText
+        android:id="@+id/editTextLecturerName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Lecturer Name"
+        android:inputType="text"
+        android:textColorHint="#B4000000"
+        android:background="@drawable/shape_round"
+        android:layout_marginTop="20dp" />
+
+    <!-- Department Input -->
+    <EditText
+        android:id="@+id/editTextLecturerDepartment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Department"
+        android:inputType="text"
+        android:textColorHint="#B4000000"
+        android:background="@drawable/shape_round"
+        android:layout_marginTop="20dp" />
+
+    <!-- Email Input -->
+    <EditText
+        android:id="@+id/editTextLecturerEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Email"
+        android:inputType="textEmailAddress"
+        android:textColorHint="#B4000000"
+        android:background="@drawable/shape_round"
+        android:layout_marginTop="20dp" />
+
+    <!-- Office Hours Input -->
+    <EditText
+        android:id="@+id/editTextLecturerOfficeHours"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Office Hours"
+        android:inputType="text"
+        android:textColorHint="#B4000000"
+        android:background="@drawable/shape_round"
+        android:layout_marginTop="20dp" />
+
+    <!-- Courses Input -->
+    <EditText
+        android:id="@+id/editTextLecturerCourses"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Courses (comma-separated)"
+        android:inputType="text"
+        android:textColorHint="#B4000000"
+        android:background="@drawable/shape_round"
+        android:layout_marginTop="20dp" />
+
+    <!-- Submit Button -->
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/buttonSubmitLecturer"
+        android:layout_width="match_parent"
+        android:layout_marginTop="10dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@drawable/bottom_round"
+        android:backgroundTint="@color/primaryColor"
+        android:text="Add Lecturer"
+        android:textAllCaps="false" />
+</LinearLayout>

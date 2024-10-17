@@ -1,0 +1,153 @@
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@color/white"
+    android:layout_height="match_parent"
+    tools:context=".Register">
+    <LinearLayout
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:backgroundTint="@color/primaryColor"
+        android:background="@drawable/bottom_round"
+        />
+    <!-- Kabarak University Logo -->
+    <ImageView
+        android:id="@+id/universityLogo"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:src="@drawable/kabarak_logo"
+        android:layout_marginTop="40dp"
+        android:contentDescription="Kabarak University Logo"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Login Card -->
+    <androidx.cardview.widget.CardView
+        android:backgroundTint="@color/white"
+        android:id="@+id/loginCard"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="6dp"
+        android:background="@color/white"
+        app:layout_constraintTop_toBottomOf="@id/universityLogo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginHorizontal="20dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <!-- Login Title -->
+            <TextView
+                android:id="@+id/registerTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Register"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:layout_gravity="center"
+                android:textColor="@color/black"
+                android:layout_marginBottom="20dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="40dp" />
+
+            <!-- Phone Number Field -->
+            <EditText
+                android:id="@+id/phoneField"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Enter phone number"
+                android:drawableLeft="@drawable/ic_phone"
+                android:drawablePadding="10dp"
+                android:inputType="phone"
+                android:padding="10dp"
+                android:background="@drawable/shape_round"
+                android:layout_marginBottom="10dp"
+                app:layout_constraintTop_toBottomOf="@id/registerTitle"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginHorizontal="20dp" />
+
+            <!-- Email Field -->
+            <EditText
+                android:id="@+id/emailField"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Enter email"
+                android:drawableLeft="@drawable/ic_email"
+                android:drawablePadding="10dp"
+                android:inputType="textEmailAddress"
+                android:padding="10dp"
+                android:background="@drawable/shape_round"
+                android:layout_marginBottom="10dp"
+                app:layout_constraintTop_toBottomOf="@id/phoneField"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginHorizontal="20dp" />
+
+            <!-- Password Field -->
+            <EditText
+                android:id="@+id/passwordField"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Enter password"
+                android:drawableLeft="@drawable/ic_lock"
+                android:drawablePadding="10dp"
+                android:inputType="textPassword"
+                android:padding="10dp"
+                android:background="@drawable/shape_round"
+                android:layout_marginBottom="10dp"
+                app:layout_constraintTop_toBottomOf="@id/emailField"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginHorizontal="20dp" />
+
+            <!-- Confirm Password Field -->
+            <EditText
+                android:id="@+id/confirmPasswordField"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Confirm password"
+                android:drawableLeft="@drawable/ic_lock"
+                android:drawablePadding="10dp"
+                android:inputType="textPassword"
+                android:padding="10dp"
+                android:background="@drawable/shape_round"
+                android:layout_marginBottom="20dp"
+                app:layout_constraintTop_toBottomOf="@id/passwordField"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginHorizontal="20dp" />
+
+            <!-- Register Button -->
+            <Button
+                android:id="@+id/registerButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Register"
+                android:backgroundTint="@color/primaryColor"
+                android:textColor="@color/white"
+                android:layout_marginTop="20dp"
+                app:layout_constraintTop_toBottomOf="@id/confirmPasswordField"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginHorizontal="20dp" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <!-- Google Login Button -->
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
