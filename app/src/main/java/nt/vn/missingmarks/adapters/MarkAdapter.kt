@@ -21,8 +21,23 @@ class MarkAdapter(
         fun bind(mark: Mark) {
             studentNameTextView.text = mark.course.courseName
             courseNameTextView.text = mark.course.courseName
-            markTextView.text = mark.mark?.toString() ?: "Missing"
-            itemView.setOnClickListener { onMarkClick(mark) }
+            if(mark.isexamMissing) {
+                markTextView.text = "Exam Marks Missing"
+                itemView.setOnClickListener { onMarkClick(mark) }
+            }
+            else if(mark.iscatMissing)
+            {
+                markTextView.text = "Cat Marks Missing"
+                itemView.setOnClickListener { onMarkClick(mark) }
+            }
+            else if(mark.iscatMissing and mark.isexamMissing)
+            {
+                markTextView.text = "Cat Marks and exam marks Missing"
+                itemView.setOnClickListener { onMarkClick(mark) }
+            }
+            else{
+                markTextView.text = "Exam: ${mark.exammark} cats: ${mark.catmark}"
+            }
         }
     }
 

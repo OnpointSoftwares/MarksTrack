@@ -82,8 +82,8 @@ class LecturerFragment : Fragment() {
 
             // Parse the courses input
             val courses = coursesInput.split(",").map { courseName ->
-                Course(courseId = "", courseName = courseName.trim())
-            }.filter { it.courseName.isNotEmpty() }
+                Course(courseId = "", courseName = courseName.trim(), semester = "")
+            }.filter { it.courseName!!.isNotEmpty() }
 
             if (lecturerId.isNotEmpty() && name.isNotEmpty() && department.isNotEmpty() && email.isNotEmpty()) {
                 // Create new lecturer object with new fields
@@ -137,9 +137,10 @@ class LecturerFragment : Fragment() {
                     val lecturerId = lecturerSnapshot.child("lecturerId").getValue(String::class.java) ?: ""
                     val name = lecturerSnapshot.child("name").getValue(String::class.java) ?: ""
                     val coursesList = mutableListOf<Course>()
+                    val semester:String=lecturerSnapshot.child("semester").value.toString()
                     for (courseSnapshot in lecturerSnapshot.child("courses").children) {
                         val courseName = courseSnapshot.child("courseName").getValue(String::class.java) ?: ""
-                        coursesList.add(Course(courseName = courseName))
+                        coursesList.add(Course(courseName = courseName, semester = semester))
                     }
 
                     val lecturer = Lecturer(

@@ -9,6 +9,7 @@ import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
+import nt.vn.missingmarks.lecturer.HomeFragment
 
 class StudentPanel : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -31,6 +32,10 @@ class StudentPanel : AppCompatActivity() {
         // Handle navigation item selection
         bottomNav.setOnNavigationItemSelectedListener { item ->
             when (item.itemId) {
+                R.id.home ->{
+                    loadFragment(DashboardFragment())
+                    true
+                }
                 R.id.marks -> {
                     loadFragment(StudentMarksFragment())
                     true

@@ -15,6 +15,7 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import nt.vn.missingmarks.lecturer.LecturerPanelActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -39,6 +40,7 @@ if(auth.uid != "")
             else if(snapshot.value=="lecturer")
             {
                 Toast.makeText(this@MainActivity,"Lecturer",Toast.LENGTH_LONG).show()
+                startActivity(Intent(this@MainActivity,LecturerPanelActivity::class.java))
             }
             else if(snapshot.value=="admin")
             {
@@ -95,6 +97,7 @@ if(auth.uid != "")
                            }
                            else if(snapshot.value=="lecturer")
                            {
+                               startActivity(Intent(this@MainActivity, LecturerPanelActivity::class.java))
                                Toast.makeText(this@MainActivity,"Lecturer",Toast.LENGTH_LONG).show()
                            }
                            else if(snapshot.value=="admin")

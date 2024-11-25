@@ -53,26 +53,27 @@ class LecturerAdapter(
                             dialogView.findViewById<EditText>(R.id.editTextCourseId).text.toString()
                         val courseName =
                             dialogView.findViewById<EditText>(R.id.editTextCourseName).text.toString()
-
+                        val semester=dialogView.findViewById<EditText>(R.id.editTextSemester).text.toString()
                         // Create a new Course object with the input values
                         val newCourse = Course(
                             lecturer = lecturerName,
                             courseId = courseId,
-                            courseName = courseName
+                            courseName = courseName,
+                            semester = semester
                         )
                         val idKey=FirebaseDatabase.getInstance().reference.push().key
-                        FirebaseDatabase.getInstance().reference.child("courses").child(idKey.toString())
+                        FirebaseDatabase.getInstance().reference.child("courses").child(newCourse.courseId.toString())
                             .setValue(newCourse).addOnCompleteListener {
                             if (it.isSuccessful) {
                                 Toast.makeText(
                                     itemView.context,
-                                    "Course added successfully",
+                                    "Unit added successfully",
                                     Toast.LENGTH_LONG
                                 ).show()
                             } else {
                                 Toast.makeText(
                                     itemView.context,
-                                    "Course add failed",
+                                    "Unit add failed",
                                     Toast.LENGTH_LONG
                                 ).show()
                             }

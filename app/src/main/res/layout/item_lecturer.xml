@@ -36,14 +36,14 @@
         android:layout_width="wrap_content"
         android:layout_marginEnd="20dp"
         android:layout_height="wrap_content"
-        android:text="View Courses" />
+        android:text="View Units" />
     <androidx.appcompat.widget.AppCompatButton
         android:background="@drawable/shape_round"
         android:id="@+id/add_courses"
         android:backgroundTint="@color/primaryColor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Add Course" />
+        android:text="Add Unit" />
 </LinearLayout>
 
 </LinearLayout>

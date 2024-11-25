@@ -7,17 +7,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".StudentCoursesFragment">
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:layout_width="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:background="@drawable/shape_round"
-        android:backgroundTint="@color/primaryColor"
-        android:src="@drawable/baseline_add_24"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/newCourse"
-        />
     <!-- RecyclerView for displaying the list of students -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/courseRecyclerView"

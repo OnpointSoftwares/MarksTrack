@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="@color/white"
+    android:elevation="2dp"
+    android:layout_marginBottom="8dp">
+
+    <TextView
+        android:id="@+id/tv_course_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Course Name"
+        android:textSize="20sp"
+        android:textColor="@color/black"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tv_course_code"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Course Code"
+        android:textSize="16sp"
+        android:textColor="@color/black" />
+    <TextView
+        android:id="@+id/tv_semester"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="semester"
+        android:textSize="16sp"
+        android:textColor="@color/black" />
+
+    <Button
+        android:id="@+id/btn_view_students"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="View Registered Students"
+        android:layout_marginTop="8dp" />
+</LinearLayout>

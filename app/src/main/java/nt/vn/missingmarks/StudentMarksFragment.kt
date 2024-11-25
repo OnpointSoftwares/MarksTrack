@@ -5,28 +5,18 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.EditText
-import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
-import com.google.firebase.database.ktx.getValue
-import nt.vn.missingmarks.adapters.StudentAdapter
-import nt.vn.missingmarks.adapters.StudentMarksAdapter
+import nt.vn.missingmarks.lecturer.MarksAdapter
 import nt.vn.missingmarks.models.Course
-import nt.vn.missingmarks.models.Lecturer
 import nt.vn.missingmarks.models.Mark
-import nt.vn.missingmarks.models.student
 
 class StudentMarksFragment : Fragment() {
 
     private lateinit var recyclerView: RecyclerView
-    private lateinit var studentmarksAdapter: StudentMarksAdapter
+    private lateinit var marksAdapter: MarksAdapter
     private lateinit var studentmarksList: MutableList<Mark>
     private lateinit var database: DatabaseReference
     override fun onCreateView(
@@ -35,46 +25,53 @@ class StudentMarksFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_student_marks, container, false)
+
         // Initialize RecyclerView
         recyclerView = view.findViewById(R.id.studentmarksRecyclerView)
-        recyclerView.layoutManager = LinearLayoutManager(context)
-        studentmarksList = mutableListOf()
-        // Initialize Firebase Realtime Database
-        database = FirebaseDatabase.getInstance().getReference("marks").child("id")
+        recyclerView.layoutManager = LinearLayoutManager(requireContext())
 
-        // Fetch and set the student data from Firebase
-        fetchStudentsFromFirebase()
+        // Initialize empty list of marks
+        val marksList = ArrayList<Mark>()
+
+        // Fetch data from Firebase
+        FirebaseDatabase.getInstance().reference.child("marks")
+            .addValueEventListener(object : ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    marksList.clear() // Clear previous data to avoid duplication
+
+                    for (snapshotd in snapshot.children) {
+                        for (dsnapshot in snapshotd.children) {
+                            // Assuming you have structure: "marks/{studentId}/{courseId}/{score}"
+                            val courseName =
+                                dsnapshot.child("course").child("courseName").value.toString()
+                            val courseId =
+                                dsnapshot.child("course").child("courseId").value.toString()
+                            val lecturer =
+                                dsnapshot.child("course").child("lecturer").value.toString()
+                            val score = dsnapshot.child("examMark")
+                                .value.toString() // null if not available
+                            val catscore = dsnapshot.child("catMark")
+                                .value.toString()
+                            val semester=dsnapshot.child("course").child("semester").value.toString()
+                            val course = Course(lecturer, courseName, courseId, semester = semester)
+                            val mark = Mark(course =course, exammark = score, catmark = catscore)
+                            marksList.add(mark)
+                        }
+                    }
+
+                    // After fetching data, update the adapter
+                    marksAdapter = MarksAdapter(marksList)
+                    recyclerView.adapter = marksAdapter
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                    // Handle database errors here
+                    Log.e("FirebaseError", "Error: ${error.message}")
+                }
+            })
 
         return view
     }
-
-
-    private fun fetchStudentsFromFirebase() {
-        database.addValueEventListener(object : ValueEventListener {
-            override fun onDataChange(dataSnapshot: DataSnapshot) {
-                studentmarksList.clear()
-
-                for (studentSnapshot in dataSnapshot.children) {
-                    val studentId =
-                        studentSnapshot.child("studentId").getValue(String::class.java) ?: ""
-                    val marks = studentSnapshot.child("mark").getValue(String::class.java) ?: ""
-                    val course=studentSnapshot.child("course").value as Course
-                    val studentmarks = Mark(
-                        course = course,
-                        mark = marks.toDouble()
-                    )
-
-                    studentmarksList.add(studentmarks)
-                }
-
-                studentmarksAdapter = StudentMarksAdapter(studentmarksList)
-                recyclerView.adapter = studentmarksAdapter
-            }
-
-            override fun onCancelled(databaseError: DatabaseError) {
-                Log.w("StudentFragment", "loadPost:onCancelled", databaseError.toException())
-            }
-        })
-    }
 }
+
 

@@ -20,7 +20,10 @@ class StudentMarksAdapter(
         private val courseMark: TextView = itemView.findViewById(R.id.courseMark)
         fun bind(mark: Mark) {
             courseName.text = mark.course.courseName
-                courseMark.text = mark.mark.toString()
+                courseMark.text = mark.exammark.toString()
+            if(mark.isexamMissing){
+
+            }
         }
     }
 

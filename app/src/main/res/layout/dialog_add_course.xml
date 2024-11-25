@@ -27,13 +27,21 @@
         android:padding="10dp"
         android:textSize="16sp"
         android:layout_marginTop="10dp"/>
-
+    <EditText
+        android:id="@+id/editTextSemester"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Semester"
+        android:inputType="text"
+        android:padding="10dp"
+        android:textSize="16sp"
+        android:layout_marginTop="10dp"/>
     <!-- Submit button to add the course -->
     <Button
         android:id="@+id/buttonSubmitCourse"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Add Course"
+        android:text="Add Unit"
         android:layout_gravity="end"
         android:layout_marginTop="16dp"/>
 </LinearLayout>

@@ -1,120 +1,101 @@
 package nt.vn.missingmarks
 
 import android.os.Bundle
-import android.util.Log
+import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.EditText
 import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
-import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
-import nt.vn.missingmarks.adapters.CourseAdapter
+import nt.vn.missingmarks.R
+import nt.vn.missingmarks.lecturer.CourseAdapter
+import nt.vn.missingmarks.lecturer.StudentsFragment
 import nt.vn.missingmarks.models.Course
 
 class CoursesFragment : Fragment() {
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var courseAdapter: CourseAdapter
-    private lateinit var courseList: MutableList<Course>
     private lateinit var database: DatabaseReference
-    private lateinit var addCourseButton: FloatingActionButton
-
+    private var lecid:String=""
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        val view = inflater.inflate(R.layout.fragment_courses, container, false)
-        addCourseButton = view.findViewById(R.id.newCourse)
+        val view = inflater.inflate(R.layout.fragment_courses_lecturer, container, false)
 
-        // Initialize RecyclerView
-        recyclerView = view.findViewById(R.id.courseRecyclerView)
-        recyclerView.layoutManager = LinearLayoutManager(context)
-        courseList = mutableListOf()
+        // Initialize RecyclerView with LinearLayoutManager
+        recyclerView = view.findViewById(R.id.recycler_view_courses)
+        recyclerView.layoutManager = LinearLayoutManager(requireContext())
 
-        addCourseButton.setOnClickListener {
-            showAddCourseDialog()
+        // Set the adapter with an empty course list and listener for course selection
+        courseAdapter = CourseAdapter(emptyList()) { course ->
+            viewStudents(course)
         }
+        recyclerView.adapter = courseAdapter
 
-        // Initialize Firebase Realtime Database
+        // Initialize Firebase reference
         database = FirebaseDatabase.getInstance().getReference("courses")
 
-        // Fetch and set the course data from Firebase
-        fetchCoursesFromFirebase()
+        // Fetch and update courses from Firebase
+        fetchCourses()
 
         return view
     }
 
-    private fun showAddCourseDialog() {
-        // Create a dialog to add course
-        val dialogView = LayoutInflater.from(context).inflate(R.layout.dialog_add_course, null)
-        val builder = AlertDialog.Builder(requireContext())
-            .setView(dialogView)
-            .setTitle("Add New Course")
+    private fun fetchCourses() {
+        FirebaseDatabase.getInstance().reference.child("lecturers").addValueEventListener(object:ValueEventListener{
+            override fun onDataChange(snapshot: DataSnapshot) {
+                for(dsnapshot in snapshot.children)
+                {
+                    if(dsnapshot.child("email").value.toString()==FirebaseAuth.getInstance().currentUser!!.email)
+                    {
 
-        val alertDialog = builder.show()
-
-        // Get references to the input fields in the dialog
-        val editTextCourseId = dialogView.findViewById<EditText>(R.id.editTextCourseId)
-        val editTextCourseName = dialogView.findViewById<EditText>(R.id.editTextCourseName)
-        val submitButton = dialogView.findViewById<Button>(R.id.buttonSubmitCourse)
-
-        // Handle form submission
-        submitButton.setOnClickListener {
-            val courseId = editTextCourseId.text.toString()
-            val courseName = editTextCourseName.text.toString()
-
-            if (courseId.isNotEmpty() && courseName.isNotEmpty()) {
-                // Create new course object
-                val newCourse = Course(
-                    courseId = courseId,
-                    courseName = courseName
-                )
-
-                // Add new course to Firebase
-                val key = database.push().key.toString()
-                database.child(key).setValue(newCourse).addOnCompleteListener {
-                    Toast.makeText(requireContext(), "Course added", Toast.LENGTH_LONG).show()
+                        lecid=dsnapshot.child("lecturerId").value.toString()
+                        Toast.makeText(requireContext(),lecid,Toast.LENGTH_LONG).show()
+                    }
                 }
-
-                // Dismiss the dialog
-                alertDialog.dismiss()
-            } else {
-                Toast.makeText(context, "Please fill in all required fields", Toast.LENGTH_SHORT).show()
             }
-        }
-    }
 
-    private fun fetchCoursesFromFirebase() {
+            override fun onCancelled(error: DatabaseError) {
+                TODO("Not yet implemented")
+            }
+
+        })
+        // Attach listener to Firebase database to get courses
         database.addValueEventListener(object : ValueEventListener {
-            override fun onDataChange(dataSnapshot: DataSnapshot) {
-                courseList.clear()
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val courses = mutableListOf<Course>()
+                for (courseSnapshot in snapshot.children) {
+                    val lecturer=courseSnapshot.child("lecturer").value.toString()
+                    val courseId=courseSnapshot.child("courseId").value.toString()
+                    val courseName=courseSnapshot.child("courseName").value.toString()
+                    val students=courseSnapshot.child("students").value.toString()
+                    val semester=courseSnapshot.child("semester").value.toString()
+                    courses.add(Course(lecturer, courseId, courseName, semester = semester))
 
-                for (courseSnapshot in dataSnapshot.children) {
-                    val courseId = courseSnapshot.child("courseId").getValue(String::class.java) ?: ""
-                    val courseName = courseSnapshot.child("courseName").getValue(String::class.java) ?: ""
-
-                    val course = Course(
-                        courseId = courseId,
-                        courseName = courseName
-                    )
-
-                    courseList.add(course)
                 }
-
-                courseAdapter = CourseAdapter(courseList)
-                recyclerView.adapter = courseAdapter
+                // Update the RecyclerView adapter with fetched courses
+                courseAdapter.updateCourses(courses)
             }
 
-            override fun onCancelled(databaseError: DatabaseError) {
-                Log.w("CoursesFragment", "loadCourse:onCancelled", databaseError.toException())
+            override fun onCancelled(error: DatabaseError) {
+                Toast.makeText(requireContext(), "Failed to fetch courses: ${error.message}", Toast.LENGTH_SHORT).show()
             }
         })
+    }
+
+    private fun viewStudents(course: Course) {
+        Toast.makeText(requireContext(), "Viewing students for ${course.courseName}", Toast.LENGTH_SHORT).show()
+
+        // Navigate to the StudentsFragment to view students in the selected course
+        val studentsFragment = StudentsFragment.newInstance(course)
+        parentFragmentManager.beginTransaction()
+            .replace(R.id.fragment_container, studentsFragment)
+            .addToBackStack(null)
+            .commit()
     }
 }

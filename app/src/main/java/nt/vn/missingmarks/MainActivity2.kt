@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
+import nt.vn.missingmarks.AdminMissingMarksFragment
 
 class MainActivity2 : AppCompatActivity() {
 
@@ -46,6 +47,10 @@ class MainActivity2 : AppCompatActivity() {
                 }
                 R.id.navigation_missing_marks -> {
                     loadFragment(CoursesFragment())
+                    true
+                }
+                R.id.missing_marks -> {
+                    loadFragment(AdminMissingMarksFragment())
                     true
                 }
                 else -> false

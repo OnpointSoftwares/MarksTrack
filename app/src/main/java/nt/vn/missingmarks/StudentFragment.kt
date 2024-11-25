@@ -16,9 +16,6 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import nt.vn.missingmarks.adapters.StudentAdapter
-import nt.vn.missingmarks.models.Course
-import nt.vn.missingmarks.models.Lecturer
-import nt.vn.missingmarks.models.Mark
 import nt.vn.missingmarks.models.student
 
 class StudentFragment : Fragment() {
@@ -85,7 +82,7 @@ class StudentFragment : Fragment() {
                 val newStudent = student(
                     studentId = studentId,
                     name = name,
-                    age = age,
+                    age = age.toString(),
                     gender = gender,
                     email = email,
                     phoneNumber = phone,
@@ -102,7 +99,7 @@ class StudentFragment : Fragment() {
                                 .addOnCompleteListener {
                                     Toast.makeText(
                                         requireContext(),
-                                        "Lecturer added",
+                                        "Student added",
                                         Toast.LENGTH_LONG
                                     ).show()
                                 }
@@ -129,7 +126,7 @@ class StudentFragment : Fragment() {
                     val studentId =
                         studentSnapshot.child("studentId").getValue(String::class.java) ?: ""
                     val name = studentSnapshot.child("name").getValue(String::class.java) ?: ""
-                    val age = studentSnapshot.child("age").getValue(Int::class.java) ?: 0
+                    val age = studentSnapshot.child("age").value.toString()
                     val gender = studentSnapshot.child("gender").getValue(String::class.java) ?: ""
                     val email = studentSnapshot.child("email").getValue(String::class.java) ?: ""
                     val phone =
@@ -140,7 +137,7 @@ class StudentFragment : Fragment() {
                     val student = student(
                         studentId = studentId,
                         name = name,
-                        age = age,
+                        age = age.toString(),
                         gender = gender,
                         email = email,
                         phoneNumber = phone,

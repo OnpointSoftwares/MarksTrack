@@ -1,0 +1,161 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- School -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="School"
+            android:textSize="16sp"
+            android:paddingBottom="4dp" />
+
+        <EditText
+            android:id="@+id/etSchool"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter your school" />
+
+        <!-- Department -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Department"
+            android:textSize="16sp"
+            android:paddingTop="8dp"
+            android:paddingBottom="4dp" />
+
+        <EditText
+            android:id="@+id/etDepartment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter your department" />
+
+        <!-- Student Name -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Student Name"
+            android:textSize="16sp"
+            android:paddingTop="8dp"
+            android:paddingBottom="4dp" />
+
+        <EditText
+            android:id="@+id/etStudentName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter your name" />
+
+        <!-- Registration Number -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Registration Number"
+            android:textSize="16sp"
+            android:paddingTop="8dp"
+            android:paddingBottom="4dp" />
+
+        <EditText
+            android:id="@+id/etRegNo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter your registration number" />
+
+        <!-- Unit Code -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Unit Code"
+            android:textSize="16sp"
+            android:paddingTop="8dp"
+            android:paddingBottom="4dp" />
+
+        <EditText
+            android:id="@+id/etUnitCode"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter the unit code" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Unit Description"
+            android:textSize="16sp"
+            android:paddingTop="8dp"
+            android:paddingBottom="4dp" />
+
+        <EditText
+            android:id="@+id/etUnitDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter the unit code" />
+
+
+
+        <!-- Semester -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Semester"
+            android:textSize="16sp"
+            android:paddingTop="8dp"
+            android:paddingBottom="4dp" />
+
+        <EditText
+            android:id="@+id/etSemester"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter semester (e.g., December 2019)" />
+
+        <!-- Exam Type -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Type of Exam"
+            android:textSize="16sp"
+            android:paddingTop="8dp"
+            android:paddingBottom="4dp" />
+
+        <EditText
+            android:id="@+id/etExamType"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter exam type (e.g., normal, special)" />
+
+        <!-- Lecturer's Name -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Lecturer's Name"
+            android:textSize="16sp"
+            android:paddingTop="8dp"
+            android:paddingBottom="4dp" />
+
+        <EditText
+            android:id="@+id/etLecturerName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter lecturer's name" />
+
+        <!-- CAT Mark -->
+
+
+
+
+        <!-- Submit Button -->
+        <Button
+            android:id="@+id/btnSubmit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Submit"
+            android:paddingTop="16dp"
+            android:layout_marginTop="16dp" />
+
+    </LinearLayout>
+</ScrollView>
